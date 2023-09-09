@@ -8,10 +8,10 @@ connection.once('open', async () => {
   console.log('connected');
 
   // Drop existing users
-  await Course.deleteMany({});
+  await User.deleteMany({});
 
   // Drop existing Thoughts
-  await Student.deleteMany({});
+  await Thought.deleteMany({});
 
   // Create empty array to hold the students
   const users = [
@@ -44,7 +44,7 @@ connection.once('open', async () => {
   // }
 
   // Add students to the collection and await the results
-  await User.collection.insertMany(users);
+  // await User.collection.insertMany(users);
 
   // Add courses to the collection and await the results
   // await Course.collection.insertOne({
