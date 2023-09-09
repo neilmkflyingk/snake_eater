@@ -2,10 +2,19 @@ const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all thoughts
-  getAllThoughts(req, res) {
-    Thought.find()
-      .then((thoughts) => res.json(thoughts))
-      .catch((err) => res.status(500).json(err));
+  getAllThought(req, res) {
+    Thought.find({})
+      .populate({
+        path: "reactions",
+        select: "-__v",
+      })
+      .select("-__v")
+      .sort({ _id: -1 })
+      .then((dbThoughtData) => res.json(dbThoughtData))
+      .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+      });
   },
   // Get a thought
   getSingleThoughts(req, res) {
