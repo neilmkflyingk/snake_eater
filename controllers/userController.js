@@ -17,20 +17,28 @@ module.exports = {
       });
   },
   // Get a single user
-  getSingleUser(req, res) {
-    User.findOne({ _id: req.params.userId })
-      .select('-__v')
-      .then(async (user) =>
-        !user
-          ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json({
-              user,
-              grade: await grade(req.params.userId),
-            })
-      )
+  getUserById({ params }, res) {
+    User.findOne({ _id: params.id })
+      .populate({
+        path: "thoughts",
+        select: "-__v",
+      })
+      .populate({
+        path: "friends",
+        select: "-__v",
+      })
+      .select("-__v")
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          return res
+            .status(404)
+            .json({ message: "No user found with this id!" });
+        }
+        res.json(dbUserData);
+      })
       .catch((err) => {
         console.log(err);
-        return res.status(500).json(err);
+        res.sendStatus(400);
       });
   },
   // create a new user
