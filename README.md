@@ -9,7 +9,7 @@
   
   *What, why, and how:* 
   
-  this
+  We all know how big social networking has gotten and how big of a role it plays in many aspects from our daily lives to our work lives. As a full-stack web developer, I wanted to become better associated with the workings of these platforms. This is a back end project for a social network site. It has no front end. It uses Express.js for routing, a MongoDB database so that it can handle large amounts of unstructured data, and the Mongoose ODM.
 
   ## Table of Contents
   * [Installation](#installation)
@@ -21,16 +21,26 @@
   
   *Instructions on how to install project and to get the development environment running:*
   
-  clone
+  - clone this repo to your local device
+  - run `npm i`
+  
   
   ## Usage 
   
   *Instructions and examples for use:*
   
-  npm run dev
-  
-  ## Resources/Credit
+  - run `npm run dev` in your CLI
+  - once the program is running on local port 3001, you can open insomnia to test the routes.
 
+  Usage video: https://drive.google.com/file/d/1Ek2oPBvOZqeSsalh7VtYAPOcEH0CfbRK/view  
+
+  ![Screenshot](Assets/ScreenShot.png)
+
+  ## Resources/Credit
+  UCB full-stack bootcamp instructional team:
+  - Kayvon
+  - UCB full-stack gitlab repo module 18 mini project
+  
   ## License
   
   MIT License
